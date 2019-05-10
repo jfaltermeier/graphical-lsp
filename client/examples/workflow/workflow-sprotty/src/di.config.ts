@@ -37,6 +37,8 @@ import {
     hoverModule,
     HtmlRoot,
     HtmlRootView,
+    labelEditModule,
+    labelEditUiModule,
     LogLevel,
     modelHintsModule,
     modelSourceModule,
@@ -67,7 +69,7 @@ import {
 import executeCommandModule from "@glsp/sprotty-client/lib/features/execute/di.config";
 import { Container, ContainerModule } from "inversify";
 
-import { ActivityNode, Icon, TaskNode, WeightedEdge } from "./model";
+import { ActivityNode, Icon, TaskLabel, TaskNode, WeightedEdge } from "./model";
 import { WorkflowModelFactory } from "./model-factory";
 import { IconView, TaskNodeView, WeightedEdgeView, WorkflowEdgeView } from "./workflow-views";
 
@@ -80,8 +82,7 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
     configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
     configureModelElement(context, 'task:manual', TaskNode, TaskNodeView);
-    configureModelElement(context, 'label:heading', SLabel, SLabelView);
-    configureModelElement(context, 'label:text', SLabel, SLabelView);
+    configureModelElement(context, 'label:heading', TaskLabel, SLabelView);
     configureModelElement(context, 'comp:comp', SCompartment, SCompartmentView);
     configureModelElement(context, 'comp:header', SCompartment, SCompartmentView);
     configureModelElement(context, 'label:icon', SLabel, SLabelView);
@@ -102,7 +103,7 @@ export default function createContainer(widgetId: string): Container {
     const container = new Container();
 
     container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule,
-        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule,
+        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule,
         commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule);
 

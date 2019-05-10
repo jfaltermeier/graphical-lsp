@@ -60,8 +60,8 @@ export * from './utils/marker';
 export * from './utils/smodel-util';
 export * from './utils/viewpoint-util';
 export {
-    validationModule, saveModule, executeModule, paletteModule, toolFeedbackModule, defaultGLSPModule, modelHintsModule, glspCommandPaletteModule, requestResponseModule, //
-    glspSelectModule, glspMouseToolModule
+    validationModule, saveModule, executeModule, paletteModule, toolFeedbackModule, defaultGLSPModule,
+    modelHintsModule, glspCommandPaletteModule, requestResponseModule, glspSelectModule, glspMouseToolModule
 };
 
 
