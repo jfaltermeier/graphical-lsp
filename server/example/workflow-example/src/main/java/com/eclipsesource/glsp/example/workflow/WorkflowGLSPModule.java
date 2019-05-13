@@ -23,6 +23,7 @@ import com.eclipsesource.glsp.api.diagram.DiagramManager;
 import com.eclipsesource.glsp.api.factory.PopupModelFactory;
 import com.eclipsesource.glsp.api.handler.OperationHandler;
 import com.eclipsesource.glsp.api.handler.ServerCommandHandler;
+import com.eclipsesource.glsp.api.labeledit.LabelEditValidator;
 import com.eclipsesource.glsp.api.markers.ModelValidator;
 import com.eclipsesource.glsp.api.model.ModelElementOpenListener;
 import com.eclipsesource.glsp.api.model.ModelExpansionListener;
@@ -39,6 +40,7 @@ import com.eclipsesource.glsp.example.workflow.handler.DeleteWorkflowElementHand
 import com.eclipsesource.glsp.example.workflow.handler.ReconnectEdgeHandler;
 import com.eclipsesource.glsp.example.workflow.handler.RerouteEdgeHandler;
 import com.eclipsesource.glsp.example.workflow.handler.SimulateCommandHandler;
+import com.eclipsesource.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import com.eclipsesource.glsp.example.workflow.marker.WorkflowModelValidator;
 import com.eclipsesource.glsp.server.di.DefaultGLSPModule;
 import com.eclipsesource.glsp.server.operationhandler.ApplyLabelEditOperationHandler;
@@ -106,6 +108,11 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
 	@Override
 	protected Class<? extends ModelValidator> bindModelValidator() {
 		return WorkflowModelValidator.class;
+	}
+	
+	@Override
+	protected Class<? extends LabelEditValidator> bindLabelEditValidator() {
+		return WorkflowLabelEditValidator.class;
 	}
 
 	@Override

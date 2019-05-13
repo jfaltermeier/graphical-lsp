@@ -14,6 +14,8 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import "../css/diagram.css";
+import "balloon-css/balloon.min.css";
+import "sprotty/css/edit-label.css";
 
 import {
     boundsModule,
@@ -31,6 +33,7 @@ import {
     exportModule,
     fadeModule,
     glspCommandPaletteModule,
+    glspEditLabelValidationModule,
     GLSPGraph,
     glspMouseToolModule,
     glspSelectModule,
@@ -103,7 +106,7 @@ export default function createContainer(widgetId: string): Container {
     const container = new Container();
 
     container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule,
-        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule,
+        hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule,
         commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule);
 

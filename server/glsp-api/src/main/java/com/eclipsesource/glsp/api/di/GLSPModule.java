@@ -21,6 +21,7 @@ import com.eclipsesource.glsp.api.diagram.DiagramManagerProvider;
 import com.eclipsesource.glsp.api.factory.ModelFactory;
 import com.eclipsesource.glsp.api.factory.PopupModelFactory;
 import com.eclipsesource.glsp.api.jsonrpc.GLSPServer;
+import com.eclipsesource.glsp.api.labeledit.LabelEditValidator;
 import com.eclipsesource.glsp.api.markers.ModelValidator;
 import com.eclipsesource.glsp.api.model.ModelElementOpenListener;
 import com.eclipsesource.glsp.api.model.ModelExpansionListener;
@@ -52,6 +53,7 @@ public abstract class GLSPModule extends AbstractModule {
 		bind(ServerCommandHandlerProvider.class).to(bindServerCommandHandlerProvider());
 		bind(CommandPaletteActionProvider.class).to(bindCommandPaletteActionProvider());
 		bind(ModelValidator.class).to(bindModelValidator());
+		bind(LabelEditValidator.class).to(bindLabelEditValidator());
 		bind(DiagramManagerProvider.class).to(bindDiagramManagerProvider());
 		bind(ModelStateProvider.class).to(bindModelStateProvider());
 	}
@@ -112,5 +114,9 @@ public abstract class GLSPModule extends AbstractModule {
 
 	protected Class<? extends ModelValidator> bindModelValidator() {
 		return ModelValidator.NullImpl.class;
+	}
+
+	protected Class<? extends LabelEditValidator> bindLabelEditValidator() {
+		return LabelEditValidator.NullImpl.class;
 	}
 }

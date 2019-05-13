@@ -109,6 +109,8 @@ public abstract class Action {
 		public static final String REQUEST_MARKERS = "requestMarkers";
 		public static final String SET_MARKERS = "setMarkers";
 		public static final String LAYOUT = "layout";
+		public static final String VALIDATE_LABEL_EDIT_ACTION = "validateLabelEditAction";
+		public static final String SET_LABEL_EDIT_VALIDATION_RESULT_ACTION = "setLabelEditValidationResultAction";
 	}
 
 }

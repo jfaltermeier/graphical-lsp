@@ -51,12 +51,14 @@ import com.eclipsesource.glsp.api.action.kind.SelectAction;
 import com.eclipsesource.glsp.api.action.kind.SelectAllAction;
 import com.eclipsesource.glsp.api.action.kind.ServerStatusAction;
 import com.eclipsesource.glsp.api.action.kind.SetBoundsAction;
+import com.eclipsesource.glsp.api.action.kind.SetEditLabelValidationResultAction;
 import com.eclipsesource.glsp.api.action.kind.SetLayersAction;
 import com.eclipsesource.glsp.api.action.kind.SetModelAction;
 import com.eclipsesource.glsp.api.action.kind.SetOperationsAction;
 import com.eclipsesource.glsp.api.action.kind.SetPopupModelAction;
 import com.eclipsesource.glsp.api.action.kind.ToogleLayerAction;
 import com.eclipsesource.glsp.api.action.kind.UpdateModelAction;
+import com.eclipsesource.glsp.api.action.kind.ValidateLabelEditAction;
 import com.eclipsesource.glsp.api.provider.ActionProvider;
 
 public class DefaultActionProvider implements ActionProvider {
@@ -98,6 +100,7 @@ public class DefaultActionProvider implements ActionProvider {
 		defaultActions.add(new SetModelAction());
 		defaultActions.add(new SetOperationsAction());
 		defaultActions.add(new SetPopupModelAction());
+		defaultActions.add(new SetEditLabelValidationResultAction());
 		defaultActions.add(new ToogleLayerAction());
 		defaultActions.add(new UpdateModelAction());
 		defaultActions.add(new ExecuteServerCommandAction());
@@ -106,6 +109,7 @@ public class DefaultActionProvider implements ActionProvider {
 		defaultActions.add(new ReconnectConnectionOperationAction());
 		defaultActions.add(new RerouteConnectionOperationAction());
 		defaultActions.add(new LayoutAction());
+		defaultActions.add(new ValidateLabelEditAction());
 	}
 
 	@Override
