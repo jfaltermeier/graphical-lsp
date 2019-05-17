@@ -16,10 +16,11 @@
 import { ContainerModule } from "inversify";
 import { TYPES } from "sprotty";
 
-import { ServerEditLabelValidator } from "./edit-label-validator";
+import { BalloonLabelValidationDecorator, ServerEditLabelValidator } from "./edit-label-validator";
 
 const glspEditLabelValidationModule = new ContainerModule(bind => {
     bind(TYPES.IEditLabelValidator).to(ServerEditLabelValidator);
+    bind(TYPES.IEditLabelValidationDecorator).to(BalloonLabelValidationDecorator);
 });
 
 export default glspEditLabelValidationModule;

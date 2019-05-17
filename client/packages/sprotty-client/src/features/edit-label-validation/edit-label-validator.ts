@@ -14,7 +14,15 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { inject, injectable } from "inversify";
-import { Action, EditableLabel, EditLabelValidationResult, IEditLabelValidator, Severity, SModelElement } from "sprotty";
+import {
+    Action,
+    EditableLabel,
+    EditLabelValidationResult,
+    IEditLabelValidationDecorator,
+    IEditLabelValidator,
+    Severity,
+    SModelElement
+} from "sprotty";
 
 import { GLSP_TYPES } from "../../types";
 import { RequestResponseSupport } from "../request-response/support";
@@ -53,4 +61,35 @@ export class ServerEditLabelValidator implements IEditLabelValidator {
         return { severity: <Severity>'ok' };
     }
 
+}
+
+@injectable()
+export class BalloonLabelValidationDecorator implements IEditLabelValidationDecorator {
+
+    decorate(input: HTMLInputElement, result: EditLabelValidationResult): void {
+        const containerElement = input.parentElement;
+        if (!containerElement) {
+            return;
+        }
+        if (result.message) {
+            containerElement.setAttribute('data-balloon', result.message);
+            containerElement.setAttribute('data-balloon-pos', 'up-left');
+            containerElement.setAttribute('data-balloon-visible', 'true');
+        }
+        switch (result.severity) {
+            case 'ok': containerElement.classList.add('validation-ok'); break;
+            case 'warning': containerElement.classList.add('validation-warning'); break;
+            case 'error': containerElement.classList.add('validation-error'); break;
+        }
+    }
+
+    dispose(input: HTMLInputElement): void {
+        const containerElement = input.parentElement;
+        if (containerElement) {
+            containerElement.removeAttribute('data-balloon');
+            containerElement.removeAttribute('data-balloon-pos');
+            containerElement.removeAttribute('data-balloon-visible');
+            containerElement.classList.remove('validation-ok', 'validation-warning', 'validation-error');
+        }
+    }
 }
